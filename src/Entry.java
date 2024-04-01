@@ -1,22 +1,22 @@
-
 import java.time.Clock;
-//
+
 public class Entry {
 
     Object key;
     Object value;
-    int retententionInMillis;
     Entry next;
     Entry previous;
-    long createdTime;
+
+    long expiryTime;
+
+
 
     public Entry(Object key, Object value, int retententionInMillis, Clock clock) {
         this.key = key;
         this.value = value;
-        this.retententionInMillis = retententionInMillis;
-        this.createdTime = clock.millis();
+        this.expiryTime = clock.millis() + retententionInMillis;
     }
     public boolean isExpired(Clock clock) {
-        return  clock.millis() > this.createdTime + this.retententionInMillis;
+        return  clock.millis() >= expiryTime;
     }
 }
