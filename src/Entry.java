@@ -6,10 +6,7 @@ public class Entry {
     Object value;
     Entry next;
     Entry previous;
-
     long expiryTime;
-
-
 
     public Entry(Object key, Object value, int retententionInMillis, Clock clock) {
         this.key = key;
